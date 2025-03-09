@@ -268,4 +268,43 @@ function getTicketPrice(age) {
 }
 console.log(getTicketPrice(65))
 
+// Truthy OR Falsy ?
+
+if ("hello") {
+    console.log("This will run because 'hello' is truthy.");
+}
+// Output: This will run because 'hello' is truthy.
+
+function checkDiscountCode(discountCode) {
+    // Remove extra spaces and convert input to uppercase
+    let formattedCode = discountCode.trim().toUpperCase(); 
+
+    if (formattedCode === "") {
+        console.log("❌ No discount entered.");
+    } else if (formattedCode === "SAVE10" || formattedCode === "DISCOUNT20") {
+        console.log("🎉 Discount applied!");
+    } else {
+        console.log("❌ Invalid code. No discount applied.");
+    }
+}
+
+// Test cases
+checkDiscountCode("save10");    // ✅ "🎉 Discount applied!"
+checkDiscountCode("  DISCOUNT20  "); // ✅ "🎉 Discount applied!" (trim removes spaces)
+checkDiscountCode("");         // ❌ "No discount entered."
+checkDiscountCode("random123"); // ❌ "Invalid code. No discount applied."
+
+
+let email = "world@gmail.net"; 
+let formattedEmail = email.trim();
+
+console.log(
+    !formattedEmail 
+    ? "❌ Please enter a valid email." 
+    : !formattedEmail.includes("@") 
+    ? "❌ Invalid email format."
+    : !(formattedEmail.endsWith(".com") || formattedEmail.endsWith(".net") || formattedEmail.endsWith(".org"))
+    ? "❌ Email must end in .com, .org, or .net"
+    : "✅ Email saved!"
+);
 

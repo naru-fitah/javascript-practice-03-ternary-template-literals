@@ -308,3 +308,92 @@ console.log(
     : "✅ Email saved!"
 );
 
+// 11. Shipping Cost Calculator
+// Write a function calculateShipping(orderTotal, country) that:
+// - Returns "Free Shipping" if orderTotal is $100+ for any country
+// - Returns "$5" if orderTotal is $50-$99.99 for "USA"
+// - Returns "$10" if orderTotal is less than $50 for "USA"
+// - Returns "$15" if orderTotal is $50-$99.99 for any other country
+// - Returns "$25" if orderTotal is less than $50 for any other country
+
+
+    // Your solution here
+    function calculateShipping(orderTotal, country) {
+        if (orderTotal >= 100) {
+            return "Free Shipping";
+        } else if (country === "USA" && orderTotal >= 50) {
+            return "$5";
+        } else if (country === "USA" && orderTotal < 50) {
+            return "$10";
+        } else if (country !== "USA" && orderTotal >= 50) {
+            return "$15";
+        } else {
+            return "$25";
+        }
+    }
+    
+
+// Test cases
+console.log(calculateShipping(120, "Canada")); // Should return: "Free Shipping"
+console.log(calculateShipping(75, "USA"));     // Should return: "$5"
+console.log(calculateShipping(30, "USA"));     // Should return: "$10"
+console.log(calculateShipping(60, "UK"));      // Should return: "$15"
+console.log(calculateShipping(25, "Germany")); // Should return: "$25"
+
+
+//  12. 🔥 Challenge: Weather Clothing Advisor
+
+// Write a function getClothingRecommendation(temp, isRaining) that gives clothing advice based on the temperature and rain.
+
+// ✅ Rules:
+// - If temp >= 30 → "Wear shorts and a tank top."
+// - If temp >= 20 && temp < 30 → "A t-shirt is fine."
+// - If temp >= 10 && temp < 20 → "Wear a jacket."
+// - If temp < 10 → "Bundle up with a coat!"
+// - If it's raining (isRaining === true), append " And don't forget an umbrella!" to the message.
+
+function getClothingRecommendation(temp, isRaining) {
+    let message = "";
+
+    switch (true) {
+        case temp >= 30:
+            message = "Wear shorts and a tank top.";
+            break;
+        case temp >= 20 && temp < 30:
+            message = "A t-shirt is fine.";
+            break;
+        case temp >= 10 && temp < 20:
+            message = "Wear a jacket.";
+            break;
+        case temp < 10:
+            message = "Bundle up with a coat!";
+            break;
+        default:
+            message = "Please enter a valid temperature.";
+    }
+
+    if (isRaining) {
+        message += " And don't forget an umbrella!";
+    }
+
+    return message;
+}
+
+console.log(getClothingRecommendation(32, false)); // ✅ "Wear shorts and a tank top."
+console.log(getClothingRecommendation(25, true));  // ✅ "A t-shirt is fine. And don't forget an umbrella!"
+console.log(getClothingRecommendation(5, true));   // ✅ "Bundle up with a coat! And don't forget an umbrella!"
+
+
+// ✅ Example Output:
+// getClothingRecommendation(32, false); 
+// → "Wear shorts and a tank top."
+
+// getClothingRecommendation(25, true);  
+// → "A t-shirt is fine. And don't forget an umbrella!"
+
+// getClothingRecommendation(5, true);   
+// → "Bundle up with a coat! And don't forget an umbrella!"
+
+// 💡 Hint:
+// - Use switch(true)
+// - Use let message = "" and add to it if isRaining is true
